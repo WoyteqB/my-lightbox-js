@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+header{
+    margin-top: 30px;
+}
+header h1{
+    font-size: 50px;
+    color: #222;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.wp-block-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.wp-block-gallery.columns-4 figure{
+    width: 25%;
+    height: auto;
+    padding: 5px;
+    margin-bottom: 0;
+}
+.wp-block-gallery.columns-4 figure img{
+    max-width: 100%;
+}
