@@ -20,7 +20,7 @@ let makeLightbox = () => {
     divImgWrap.className = "image-wrap";
 
     let img = document.createElement("img");
-    img.src = "";
+    img.src = "images/tatry2.jpg";
     img.alt = "";
     
     divImgWrap.appendChild(img);
@@ -37,4 +37,5 @@ const lightbox = document.querySelector("#my-lightbox-container");
 
 lightbox.addEventListener("click", ()=>{
     lightbox.classList.add("hidden");
+    lightboxImg.src ="";
 })

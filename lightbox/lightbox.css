@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
 }
+html, body{
+    height: 100%;
+}
 #my-lightbox-container{
     position: absolute;
     top: 0;
@@ -19,11 +22,11 @@
 }
 
 #my-lightbox-container .image-wrap{
-    max-width: 80vw;
-    max-height: 80vh;
-    display: block;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.7);
 }
 #my-lightbox-container .image-wrap img{
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 80vw;
+    max-height: 80vh;
 }
