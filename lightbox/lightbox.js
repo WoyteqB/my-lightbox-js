@@ -1,12 +1,13 @@
 const imageLinkList = document.querySelectorAll("figure.wp-block-gallery figure.wp-block-image a");
 
 
-imageLinkList.forEach(link => {
+imageLinkList.forEach( (link, index) => {
     let imgLink = link.href;
     link.addEventListener("click", (event)=>{
         event.preventDefault();
         lightboxImg.src = imgLink;
         lightbox.classList.remove("hidden")
+        lightboxImg.setAttribute("imgNumber",index)
     })
 
 });
@@ -20,8 +21,9 @@ let makeLightbox = () => {
     divImgWrap.className = "image-wrap";
 
     let img = document.createElement("img");
-    img.src = "images/tatry2.jpg";
+    img.src = "";
     img.alt = "";
+    img.setAttribute("imgNumber","")
     
     divImgWrap.appendChild(img);
 
@@ -68,8 +70,34 @@ makeLightbox();
 const lightboxImg = document.querySelector("#my-lightbox-container img");
 const lightbox = document.querySelector("#my-lightbox-container");
 const lightboxClose = document.querySelector("#my-lightbox-container .close-window");
+const lightboxNext = document.querySelector("#my-lightbox-container .nav-wrap .nav-next");
+const lightboxPrev = document.querySelector("#my-lightbox-container .nav-wrap .nav-prev");
 
-lightboxClose.addEventListener("click", ()=>{
+lightboxClose.addEventListener("click", (event)=>{
+    event.preventDefault();
     lightbox.classList.add("hidden");
     lightboxImg.src ="";
+});
+
+lightboxPrev.addEventListener("click", (event)=>{
+    event.preventDefault();
+    setLightboxByIndex(parseInt(lightboxImg.getAttribute("imgNumber"))-1)
+
+});
+
+lightboxNext.addEventListener("click", (event)=>{
+    event.preventDefault();
+    setLightboxByIndex(parseInt(lightboxImg.getAttribute("imgNumber"))+1)
 })
+
+let setLightboxByIndex = (index) =>{
+    if(index > imageLinkList.length-1){
+        index = 0;
+
+    }else if(index < 0){
+        index=imageLinkList.length-1;
+    }
+    console.log(index + " "+ imageLinkList.length);
+    lightboxImg.src = imageLinkList[index].href;
+    lightboxImg.setAttribute("imgNumber", index);
+};
