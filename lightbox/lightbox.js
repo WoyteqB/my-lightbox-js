@@ -97,7 +97,6 @@ let setLightboxByIndex = (index) =>{
     }else if(index < 0){
         index=imageLinkList.length-1;
     }
-    console.log(index + " "+ imageLinkList.length);
     lightboxImg.src = imageLinkList[index].href;
     lightboxImg.setAttribute("imgNumber", index);
 };
