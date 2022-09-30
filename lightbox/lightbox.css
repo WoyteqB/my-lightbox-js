@@ -7,7 +7,7 @@ html, body{
     height: 100%;
 }
 #my-lightbox-container{
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -25,8 +25,49 @@ html, body{
     padding: 10px;
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0,0,0,0.7);
+    position: relative;
 }
 #my-lightbox-container .image-wrap img{
     max-width: 80vw;
     max-height: 80vh;
+}
+
+#my-lightbox-container .image-wrap .nav-wrap{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+#my-lightbox-container .image-wrap .nav-wrap a{
+    display: block;
+    height: 100%;
+    width: 50%;
+    float: left;
+}
+#my-lightbox-container .image-wrap .nav-wrap a::before{
+    content: "";
+    display: block;
+    width: 50px;
+    height: 50px;
+    top: 45%;
+    right: 0;
+    background-color: #000;
+}
+#my-lightbox-container .image-wrap .nav-wrap a.nav-prev{
+}
+#my-lightbox-container .image-wrap .nav-wrap a.nav-next{
+    float: right;
+}
+
+#my-lightbox-container .close-box{
+    margin-top: 10px;
+}
+#my-lightbox-container .close-box .close-window{
+    background-image: url(./images/close.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 25px;
+    width: 25px;
+    display: block;
 }
