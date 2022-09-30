@@ -1,6 +1,5 @@
 const imageLinkList = document.querySelectorAll("figure.wp-block-gallery figure.wp-block-image a");
 
-
 imageLinkList.forEach( (link, index) => {
     let imgLink = link.href;
     link.addEventListener("click", (event)=>{
@@ -9,7 +8,6 @@ imageLinkList.forEach( (link, index) => {
         lightbox.classList.remove("hidden")
         lightboxImg.setAttribute("imgNumber",index)
     })
-
 });
 
 let makeLightbox = () => {
@@ -88,7 +86,7 @@ lightboxPrev.addEventListener("click", (event)=>{
 lightboxNext.addEventListener("click", (event)=>{
     event.preventDefault();
     setLightboxByIndex(parseInt(lightboxImg.getAttribute("imgNumber"))+1)
-})
+});
 
 let setLightboxByIndex = (index) =>{
     if(index > imageLinkList.length-1){
