@@ -16,9 +16,12 @@ html, body{
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 1;
+    transition: opacity ease-in-out .4s;
 }
 #my-lightbox-container.hidden{
     display: none;
+    opacity: 0;
 }
 
 #my-lightbox-container .image-wrap{
@@ -51,15 +54,19 @@ html, body{
     position: absolute;
     width: 50px;
     height: 50px;
-    top: 45%;
-    right: 15px;
+    top: calc(50% - 25px);
+    right: 30px;
     background-image: url(./images/arrow.svg);
     background-size: contain;
     background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity ease-in-out 0.4s, transform ease-in-out .2s;
 }
+
 #my-lightbox-container .image-wrap .nav-wrap a.nav-prev::before{
     right: auto;
-    left: 15px;
+    left: 30px;
+    transform: translateX(-100px)scale(0.6);
 }
 /* #my-lightbox-container .image-wrap .nav-wrap a.nav-prev{
 } */
@@ -67,11 +74,38 @@ html, body{
     float: right;
 }
 #my-lightbox-container .image-wrap .nav-wrap a.nav-next::before{
-    transform: rotate(180deg);
+    transform: translateX(100px)scale(0.6)rotate(180deg);
 }
 
+#my-lightbox-container .image-wrap:hover .nav-wrap a::before{
+    opacity: 0.4;
+    transform: translateX(0px)scale(1);
+}
+#my-lightbox-container .image-wrap:hover .nav-wrap a:hover::before{
+    opacity: 1;
+}
+#my-lightbox-container .image-wrap:hover .nav-wrap a.nav-next::before{
+    transform: translateX(0px)rotate(180deg)scale(1);
+}
+
+
+#my-lightbox-container.hidden .close-box{
+    opacity: 0;
+    transform: translateY(-100px);
+}
 #my-lightbox-container .close-box{
     margin-top: 10px;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: transform ease-in-out .3s, opacity ease-in-out .4s;
+}
+#my-lightbox-container .close-box p{
+    margin-bottom: 0;
+    float: left;
+    color: #fff;
+    font-size: 14px;
+    line-height: 18px;
+    margin-left: 10px;
 }
 #my-lightbox-container .close-box .close-window{
     background-image: url(./images/close.svg);
@@ -81,4 +115,5 @@ html, body{
     width: 25px;
     display: block;
     float: right;
+    margin-right: 10px;
 }

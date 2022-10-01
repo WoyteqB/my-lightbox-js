@@ -50,6 +50,11 @@ let makeLightbox = () => {
     let closeBox = document.createElement("div");
     closeBox.className = "close-box";
 
+    let text = document.createElement("p");
+    text.innerText = "Zdjęcie 1 z 10";
+
+    closeBox.appendChild(text);
+
     let close = document.createElement("a");
     close.href="";
     close.className="close-window";
