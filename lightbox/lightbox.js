@@ -6,7 +6,8 @@ imageLinkList.forEach( (link, index) => {
         event.preventDefault();
         lightboxImg.src = imgLink;
         lightbox.classList.remove("hidden")
-        lightboxImg.setAttribute("imgNumber",index)
+        lightboxImg.setAttribute("imgNumber",index);
+        setLightboxText(index+1, imageLinkList.length);
     })
 });
 
@@ -73,6 +74,7 @@ makeLightbox();
 const lightboxImg = document.querySelector("#my-lightbox-container img");
 const lightbox = document.querySelector("#my-lightbox-container");
 const lightboxClose = document.querySelector("#my-lightbox-container .close-window");
+const lightboxText = document.querySelector("#my-lightbox-container .close-box p");
 const lightboxNext = document.querySelector("#my-lightbox-container .nav-wrap .nav-next");
 const lightboxPrev = document.querySelector("#my-lightbox-container .nav-wrap .nav-prev");
 
@@ -92,7 +94,9 @@ lightboxNext.addEventListener("click", (event)=>{
     event.preventDefault();
     setLightboxByIndex(parseInt(lightboxImg.getAttribute("imgNumber"))+1)
 });
-
+let setLightboxText = (imgIndex, imgCount)=>{
+    lightboxText.innerText = "Zdjęcie " + imgIndex + " z " + imgCount;
+};
 let setLightboxByIndex = (index) =>{
     if(index > imageLinkList.length-1){
         index = 0;
@@ -102,4 +106,5 @@ let setLightboxByIndex = (index) =>{
     }
     lightboxImg.src = imageLinkList[index].href;
     lightboxImg.setAttribute("imgNumber", index);
+    setLightboxText(index+1, imageLinkList.length);
 };
