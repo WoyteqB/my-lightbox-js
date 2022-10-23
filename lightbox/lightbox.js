@@ -2,13 +2,15 @@ const imageLinkList = document.querySelectorAll("figure.wp-block-gallery figure.
 
 imageLinkList.forEach( (link, index) => {
     let imgLink = link.href;
-    link.addEventListener("click", (event)=>{
-        event.preventDefault();
-        lightboxImg.src = imgLink;
-        lightbox.classList.remove("hidden")
-        lightboxImg.setAttribute("imgNumber",index);
-        setLightboxText(index+1, imageLinkList.length);
-    })
+    if(imgLink.includes(".jpg")){
+        link.addEventListener("click", (event)=>{
+            event.preventDefault();
+            lightboxImg.src = imgLink;
+            lightbox.classList.remove("hidden")
+            lightboxImg.setAttribute("imgNumber",index);
+            setLightboxText(index+1, imageLinkList.length);
+        })
+    }
 });
 
 let makeLightbox = () => {
